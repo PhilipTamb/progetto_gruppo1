@@ -9,15 +9,15 @@ public class Registro_Utenti {
 
     }
 
-    public aggiungiUtente(Utente u){
+    public void aggiungiUtente(Utente u){
         registro.add(u);
     }
 
-    public rimuoviUtente(Utente u){
+    public void rimuoviUtente(Utente u){
         registro.remove(u);
     }
 
-    public cercaPerNomeUtente(String nome){
+    public void cercaPerNomeUtente(String nome){
         boolean trovato = false;
         for(Utente u: registro){
             if(u.getNomeUtente().equals(nome)){
@@ -33,7 +33,7 @@ public class Registro_Utenti {
     }
 
 
-    public ArrayList<Utente> getRegistro() {
+    public static ArrayList<Utente> getRegistro() {
         return registro;
     }
 

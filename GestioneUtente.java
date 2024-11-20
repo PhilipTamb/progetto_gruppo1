@@ -1,6 +1,7 @@
 
 public class GestioneUtente {
 
+    private static GestioneUtente instance=new GestioneUtente();
     private static Registro_Utenti registroUtenti = Registro_Utenti.getInstanceOfRegistro();
     private static Utente utenteInSessione;
 
@@ -74,5 +75,10 @@ public class GestioneUtente {
         }
     }
 
-
+    public static GestioneUtente getInstance(){
+        return instance;
+    }
+    public Utente getUtenteInSessione(){
+        return utenteInSessione;
+    }
 }

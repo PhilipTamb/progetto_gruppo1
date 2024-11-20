@@ -39,7 +39,7 @@ public class Registro_Utenti {
     }
 
 
-    public Registro_Utenti getInstanceOfRegistro() {
+    public static Registro_Utenti getInstanceOfRegistro() {
         return new Registro_Utenti();
     }
 }

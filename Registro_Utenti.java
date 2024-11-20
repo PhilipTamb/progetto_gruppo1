@@ -27,10 +27,10 @@ public class Registro_Utenti {
                 return trovato;
             }
         }
-        if(trovato == false){
-            System.out.println("Utente non Trovato");
-            return trovato;
-        }
+        
+        System.out.println("Utente non Trovato");
+        return trovato;
+      
     }
 
 

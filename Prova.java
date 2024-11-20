@@ -16,9 +16,9 @@ int corretto;
 int errato;
 
 
-    Prova(int level){
+    Prova(int stato){
         int randomIndex;
-        switch(level){
+        switch(stato){
             
             case 1:
                 randomIndex = getRandomNumber(0, domandeDiff1.length);
@@ -51,11 +51,11 @@ int errato;
     }
 
     static public int getCorretto(){
-        return corretto;
+        return this.corretto;
     }
 
     static public int getErrato(){
-        return errato;
+        return this.errato;
     }
 
 
@@ -63,6 +63,15 @@ int errato;
         return (int) ((Math.random() * (max - min)) + min);
     }
 
+
+    static public rispondi(float risposta){
+        if(risposta ==  this.risultato ){
+            return this.corretto;
+        }else{
+            return this.errato;
+        }
+
+    }
 
 
 

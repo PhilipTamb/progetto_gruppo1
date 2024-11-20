@@ -9,27 +9,26 @@ public class Registro_Utenti {
 
     }
 
-    public aggiungiUtente(Utente u){
+    public void aggiungiUtente(Utente u){
         registro.add(u);
     }
 
-    public rimuoviUtente(Utente u){
+    public void rimuoviUtente(Utente u){
         registro.remove(u);
     }
 
-    public cercaPerNomeUtente(String nome){
+    public boolean cercaPerNomeUtente(String nome){
         boolean trovato = false;
         for(Utente u: registro){
             if(u.getNomeUtente().equals(nome)){
                 System.out.println("Utene Trovato, ...carico le informazioni...");
                 System.out.println("info varie");
                 trovato = true;
-                break;
+                return trovato;
             }
         }
-        if(trovato == false){
             System.out.println("Utente non Trovato");
-        }
+            return false;
     }
 
 
@@ -38,7 +37,7 @@ public class Registro_Utenti {
     }
 
 
-    public Registro_Utenti getInstanceOfRegistro() {
+    public static Registro_Utenti getInstanceOfRegistro() {
         return new Registro_Utenti();
     }
 }

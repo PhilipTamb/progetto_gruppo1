@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Registro_Utenti {
 
-    private ArrayList<Utente> registro = new ArrayList<>();
+    private static ArrayList<Utente> registro = new ArrayList<>();
     private static Registro_Utenti instanceOfRegistroUtenti;
 
     private Registro_Utenti(){

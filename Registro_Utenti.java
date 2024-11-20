@@ -27,17 +27,19 @@ public class Registro_Utenti {
                 return trovato;
             }
         }
+        if(trovato == false){
             System.out.println("Utente non Trovato");
-            return false;
+            return trovato;
+        }
     }
 
 
-    public ArrayList<Utente> getRegistro() {
+    public static ArrayList<Utente> getRegistro() {
         return registro;
     }
 
 
-    public static Registro_Utenti getInstanceOfRegistro() {
+    public Registro_Utenti getInstanceOfRegistro() {
         return new Registro_Utenti();
     }
 }

@@ -17,18 +17,19 @@ public class Registro_Utenti {
         registro.remove(u);
     }
 
-    public void cercaPerNomeUtente(String nome){
+    public boolean cercaPerNomeUtente(String nome){
         boolean trovato = false;
         for(Utente u: registro){
             if(u.getNomeUtente().equals(nome)){
                 System.out.println("Utene Trovato, ...carico le informazioni...");
                 System.out.println("info varie");
                 trovato = true;
-                break;
+                return trovato;
             }
         }
         if(trovato == false){
             System.out.println("Utente non Trovato");
+            return trovato;
         }
     }
 

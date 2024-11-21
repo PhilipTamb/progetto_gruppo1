@@ -73,12 +73,12 @@ public class GestoreProve {
 
     // genera un numero di prove e resetta lo stato a 0
     // le prove sono a difficoltà crescente
-    public void rigeneraProve(int num) {
+    public void rigeneraProve(int num, int difficolta) {
         prove.clear();
         stato = 0;
         // i è anche la difficoltà
         for(int i=0;i<num; i++) {
-            Prova p1 = new Prova(i);
+            Prova p1 = new Prova(difficolta);
             prove.add(p1);
         }
     }

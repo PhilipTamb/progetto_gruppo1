@@ -1,32 +1,54 @@
+import java.util.Scanner;
+
 public class Menu {
 
     private static Registro_Utenti registro = Registro_Utenti.getInstanceOfRegistro();
-    private static GestioneUtente gestioneUtente=GestioneUtente.getInstance();
+    private static GestioneUtente gestioneUtente = GestioneUtente.getInstance();
+
+    private static Scanner scannerNum = new Scanner(System.in);
+    private static Scanner scannerStr = new Scanner(System.in);
+    private static String nomeUtente, password;
 
     // Metodo principale che gestisce il flusso dell'applicazione
-    public static void menuPrincipal(int scelta, String nomeUtente, String password) {
+    public static void menuPrincipal(String scelta) {
         switch (scelta) {
-            case 1: // Login
+            case "1": // Login
+                System.out.println("Login");
+                System.out.print("Inserisci nome untente:");
+                nomeUtente = scannerStr.nextLine();
+                System.out.print("Inserisci password:");
+                password = scannerStr.nextLine();
                 login(nomeUtente, password);
                 break;
 
-            case 2: // Registrazione
+            case "2": // Registrazione
+                System.out.println("Registrazione");
+                System.out.print("Inserisci nome untente:");
+                nomeUtente = scannerStr.nextLine();
+                System.out.print("Inserisci password:");
+                password = scannerStr.nextLine();
                 registrazione(nomeUtente, password);
                 break;
 
-            case 3: // Visualizza Utenti
+            case "3": // Visualizza Utenti
                 visualizzaUtenti();
                 break;
 
-            case 4: // Inizia Gioco
+            case "4": // Inizia Gioco
                 iniziaGioco();
                 break;
 
-            case 5: // Modifica Profilo
+            case "5": // Modifica Profilo
+                System.out.println("Modifica");
+                System.out.print("Inserisci nome untente da modificare:");
+                nomeUtente = scannerStr.nextLine();
+
+                System.out.print("Inserisci password da modificare:");
+                password = scannerStr.nextLine();
                 modificaProfilo(nomeUtente, password);
                 break;
 
-            case 6: // Esci
+            case "6": // Esci
                 System.out.println("Uscendo dal gestionale...");
                 break;
 
@@ -67,34 +89,41 @@ public class Menu {
         int difficolta = gestioneUtente.getUtenteInSessione().getDifficolta();
         int punteggio = gestioneUtente.getUtenteInSessione().getPunteggio();
         int errori = 0;
+        GestoreProve gioco = new GestoreProve();
+        gioco.rigeneraProve(3, difficolta);
+
 
         System.out.println("Iniziando il gioco per " + gestioneUtente.getUtenteInSessione().getNomeUtente());
 
-        while (difficolta <= 3 && errori < 3) {
-            boolean rispostaCorretta = ProveMatematiche.eseguiProva(difficolta); // Qui invoca il metodo delle prove matematiche
+        while (gioco.finito() || gioco.getSqualificato()) {
+            Prova prova = gioco.getCurrentProva(); // Qui invoca il metodo delle prove matematiche
+            System.out.println("Domanda:" + prova.getDomande());
+            float risposta = scannerNum.nextFloat();
 
-            if (rispostaCorretta) {
-                punteggio += ProveMatematiche.PUNTI_PER_RISPOSTA_CORRETTA;
-                gestioneUtente.getUtenteInSessione().setPunteggio(punteggio);
-                difficolta++;
-                gestioneUtente.getUtenteInSessione().setDifficolta(difficolta);
-                System.out.println("Risposta corretta! Punteggio: " + punteggio + ", Difficoltà: " + difficolta);
-            } else {
-                errori++;
-                System.out.println("Risposta sbagliata! Errori: " + errori);
-            }
+            gioco.rispondi(risposta);
         }
 
-        if (errori >= 3) {
+        punteggio = punteggio + gioco.getPunteggioTotale();
+        if (gioco.getSqualificato()) {
             System.out.println("Hai raggiunto il limite di errori. Sei stato rimosso dal gioco.");
             GestioneUtente.esci();
         } else {
             System.out.println("Gioco completato con successo! Punteggio finale: " + punteggio);
         }
+        GestioneUtente.incrementaPunteggio(punteggio);
+        if (punteggio < 5) {
+            GestioneUtente.decrementaDifficoltà();
+        } else {
+            GestioneUtente.incrementaDifficoltà();
+        }
     }
 
     // Modifica del profilo dell'utente loggato
     public static void modificaProfilo(String nomeUtente, String password) {
-       GestioneUtente.modifica(nomeUtente, password);
+        if (gestioneUtente.getUtenteInSessione() == null) {
+            System.out.println("Per modificare, devi prima effettuare il login.");
+            return;
+        }
+        GestioneUtente.modifica(nomeUtente, password);
     }
 }

@@ -1,0 +1,5 @@
+- Il login/registrazione.
+- Salvataggio dei dati utente in un aggregato chiamato Registro_utenti.
+- Modifica dei dati utente.
+- Esecuzione delle prove matematiche con difficoltà crescente e punteggio basato sulle risposte corrette o sbagliate.
+- Un sistema di gestione dell'utente che sarà "rimosso" dal gioco se perde troppe volte.

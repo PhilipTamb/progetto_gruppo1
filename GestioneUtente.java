@@ -6,6 +6,9 @@ public class GestioneUtente {
     private static Utente utenteInSessione;
 
     public static void login(String nome, String password) {
+        if(registroUtenti.getRegistro()==null){
+            System.err.println("Nessun utente trovato!");
+        }
         for (Utente u : registroUtenti.getRegistro()) {
             if (u.getNomeUtente().equals(nome) && u.getPassword().equals(password)) {
                 System.out.println("Login avvenuto con successo!");
@@ -45,9 +48,9 @@ public class GestioneUtente {
         esci();
     }
 
-    public static void incrementaPunteggio() {
+    public static void incrementaPunteggio(int punteggio) {
         registroUtenti.rimuoviUtente(utenteInSessione);
-        utenteInSessione.setPunteggio(utenteInSessione.getPunteggio() + 1);
+        utenteInSessione.setPunteggio(punteggio);
         registroUtenti.aggiungiUtente(utenteInSessione);
     }
     public static void decrementaPunteggio() {

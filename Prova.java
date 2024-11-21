@@ -9,11 +9,11 @@ public class Prova{
     static float[]  risultatiDiff3 = {1526f, 6.2f ,1860};
 
 
-    static Integer difficoltà;
-    static String domanda;
-    static float risultato;
-    static int corretto;
-    static int errato;
+   private static Integer difficoltà;
+    private static String domanda;
+   private  static float risultato;
+   private static int corretto;
+   private static int errato;
 
 
     Prova(int stato){
@@ -71,7 +71,7 @@ public class Prova{
     }
 
 
-    static public float rispondi(float risposta){
+    static public int rispondi(float risposta){
         if(risposta ==  risultato ){
             return corretto;
         }else{

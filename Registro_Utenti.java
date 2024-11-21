@@ -27,8 +27,6 @@ public class Registro_Utenti {
                 return trovato;
             }
         }
-        
-        System.out.println("Utente non Trovato");
         return trovato;
       
     }

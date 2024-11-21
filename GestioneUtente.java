@@ -13,10 +13,10 @@ public class GestioneUtente {
             if (u.getNomeUtente().equals(nome) && u.getPassword().equals(password)) {
                 System.out.println("Login avvenuto con successo!");
                 utenteInSessione = u;
-            } else {
-                System.err.println("Nessun utente trovato!");
+                return;
             }
         }
+        System.err.println("Nessun utente trovato!");
     }
 
     public static void registrazione(String nome, String password) {
@@ -25,6 +25,8 @@ public class GestioneUtente {
             return;
         } else {
             Utente u = new Utente(nome, password, 0, 1);
+            registroUtenti.aggiungiUtente(u);
+            System.out.println("Benvenuto "+ nome+ "effettua il login per giocare!");
         }
     }
 

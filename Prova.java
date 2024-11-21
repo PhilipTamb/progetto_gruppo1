@@ -9,16 +9,16 @@ public class Prova{
     static float[]  risultatiDiff3 = {1526f, 6.2f ,1860};
 
 
-Integer difficoltà;
-String domanda;
-float risultato;
-int corretto;
-int errato;
+    static Integer difficoltà;
+    static String domanda;
+    static float risultato;
+    static int corretto;
+    static int errato;
 
 
-    Prova(int level){
+    Prova(int stato){
         int randomIndex;
-        switch(level){
+        switch(stato){
             
             case 1:
                 randomIndex = getRandomNumber(0, domandeDiff1.length);
@@ -58,11 +58,27 @@ int errato;
         return errato;
     }
 
+    static public Integer getDifficoltà(){
+        return difficoltà;
+    }
+
+    static public String getDomande(){
+        return domanda;
+    }
 
     static public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
+
+    static public float rispondi(float risposta){
+        if(risposta ==  risultato ){
+            return corretto;
+        }else{
+            return errato;
+        }
+
+    }
 
 
 

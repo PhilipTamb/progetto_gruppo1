@@ -1,5 +1,16 @@
 import java.util.ArrayList;
 
+// Utilizzo di questa classe
+// 1. Istanzia un oggetto della classe GestoreProve g
+// 2. Chiama rigeneraProve(int numeroDiProveDesiderate)
+// 3. Apri un ciclo
+//  4. chiama getCurrentProva, che restituisce un oggetto Prova p
+//  5. chiama p.stampa per mostrare la domanda e le possibili risposte
+//  6. ricevi da utente risposta alla domanda
+//  7. chiama g.rispondi(float rispostaUtente)
+//  8. chiama g.getFinito() e se restituisce true esci dal ciclo e dì all'utente che ha vinto
+//  9. chiama g.getSqualificato() e se restituisce true esci dal ciclo e dì all'utente che ha perso
+//  10. torna all'inizio del ciclo
 public class GestoreProve {
     ArrayList<Prova> prove = new ArrayList();
     int stato = 0;
@@ -61,12 +72,13 @@ public class GestoreProve {
     }
 
     // genera un numero di prove e resetta lo stato a 0
-    public void rigeneraProve(int num) {
+    // le prove sono a difficoltà crescente
+    public void rigeneraProve(int num, int difficolta) {
         prove.clear();
         stato = 0;
         // i è anche la difficoltà
         for(int i=0;i<num; i++) {
-            Prova p1 = new Prova(i);
+            Prova p1 = new Prova(difficolta);
             prove.add(p1);
         }
     }

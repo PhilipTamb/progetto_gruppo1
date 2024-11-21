@@ -7,12 +7,20 @@ public class Prova{
     static String[] domandeDiff3 = { "Calcola la somma: 237 + 1289 ", "Calcola la divisione: 372 : 60 ",  "Calcola lamoltiplicazione: 372 x 5 ","Calcola la somma: 1058 + 18 ","Calcola la somma: 1048 + 125" };
     static float[]  risultatiDiff3 = {1526, 6.2f ,1860, 1076, 1173};
 
+<<<<<<< HEAD
     // Attributi di Prova
     static Integer difficoltà;
     static String domanda;
     static float risultato;
     static int corretto;
     static int errato;
+=======
+   private static Integer difficoltà;
+    private static String domanda;
+   private  static float risultato;
+   private static int corretto;
+   private static int errato;
+>>>>>>> 3abdbd9415e1d3d4f95bf9956d5fce5c79f4bb7f
 
     //Inizializza prova per difficoltà
     Prova(int stato){
@@ -70,7 +78,11 @@ public class Prova{
         return (int) ((Math.random() * (max - min)) + min);
     }
 
+<<<<<<< HEAD
     //Risultato risposta n
+=======
+
+>>>>>>> 3abdbd9415e1d3d4f95bf9956d5fce5c79f4bb7f
     static public int rispondi(float risposta){
         if(risposta ==  risultato ){
             return corretto;

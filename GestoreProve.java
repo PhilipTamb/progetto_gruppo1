@@ -50,7 +50,7 @@ public class GestoreProve {
 
     // dice se le prove sono finite
     public boolean finito() {
-        if(stato>=prove.size()-1) {
+        if(stato>=prove.size()) {
             return true;
         } else {
             return false;

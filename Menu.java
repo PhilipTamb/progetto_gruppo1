@@ -95,7 +95,8 @@ public class Menu {
 
         System.out.println("Iniziando il gioco per " + gestioneUtente.getUtenteInSessione().getNomeUtente());
 
-        while (gioco.finito() || gioco.getSqualificato()) {
+        // finche il gioco non è finito e non sono squalificato
+        while (!gioco.finito() && !gioco.getSqualificato()) {
             Prova prova = gioco.getCurrentProva(); // Qui invoca il metodo delle prove matematiche
             System.out.println("Domanda:" + prova.getDomande());
             float risposta = scannerNum.nextFloat();
